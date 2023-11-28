@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{title}
+    body
+        h1 Log In 
+
+        form.login__form
+            div.form__group 
+                label(for="email") Email: 
+                input.form__input#email(type='text')
+
+            div.form__group 
+                label(for="email") Password: 
+                input.form__input#password(type='text')
+
+            input.btn__signup(type="submit", value="Submit")
+
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js')
+        script(src="/js/login.js") 

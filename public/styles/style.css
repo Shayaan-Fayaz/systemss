@@ -1,0 +1,88 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+
+.chartContainer{
+    display: grid;
+    /* flex-direction: column; */
+}
+
+#myChart{
+    width: 70vw !important;
+    height: 70vh !important;
+    justify-self: center;
+}
+
+#batteryData{
+    width: 1000px !important;
+    height: 1000px !important;
+}
+
+.memoryChart{
+    display: grid;
+}
+#memoryChart{
+    width: 70vw !important;
+    height: 70vh !important;
+    justify-self: center;
+}
+
+
+/* this is the styling for the signup page*/
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2rem;
+}
+
+.btn__update_system{
+    font-size: 1.4rem;
+    padding: 1.4rem 3rem;
+    border-radius: 10rem;
+    border: none;
+    background-color: lightblue;
+    color: black;
+    cursor: pointer;
+}
+
+.form__details{
+    display: flex;
+    flex-direction: row;
+}
+
+.systemInfo-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 50rem;
+    margin: 3.5rem auto;
+    font-size: 1.6rem;
+}
+
+.cpu-info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 3.5rem auto;
+    font-size: 1.6rem;
+    width: 50rem;
+}
+
+.cpuManufacturer-heading, .cpuBrand-heading, .physicalCores-heading, .logicalProcessor-heading{
+    background-color: lightgray;
+}
+
+.cpu_data{
+    padding: 1.3rem;
+    border: 1px solid black;
+}
+
+.table-data{
+    padding: 1.3rem;
+    border: 1px solid black;
+}
+
+.manufacturer-heading, .model-heading, .serialNumber-heading{
+    background-color: lightgray;
+}
