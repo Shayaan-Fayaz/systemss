@@ -203,26 +203,47 @@ const memoryUsage = new Chart(memoryChart, {
 
 document.querySelector('.btn__update_system').addEventListener('click', async (event) => {
   const userId = event.target.value;
-  
-  const systemInfo = await axios({
-    method: 'GET',
-    url: 'http://127.0.0.1:3000/api/v1/system/system-info'
-  });
-  
-  
-  const cpuInfo = await axios({
-    method: 'GET',
-    url: 'http://127.0.0.1:3000/api/v1/system/cpu-data'
-  });
 
-  // console.log(systemInfo.data.data.)
+  try{
+    const res = await axios({
+      method: 'PATCH',
+      url: 'http://127.0.0.1:3000/api/v1/system',
+      data:{
+        userId
+      }
+    });
+
+    location.reload();
+  }catch(err){
+    console.log(err);
+  }
+  
+  // const systemInfo = await axios({
+  //   method: 'GET',
+  //   url: 'http://127.0.0.1:3000/api/v1/system/system-info'
+  // });
 
 
-  // const updateSystem = await axios({
-  //   method: 'PATCH',
-  //   url: 'http://127.0.0.1:3000/api/v1/system/',
-  //   data: {
-  //     userId: 
-  //   }
-  // })
+  // const systemData = systemInfo.data.data.data;
+  
+  
+  // const cpuInfo = await axios({
+  //   method: 'GET',
+  //   url: 'http://127.0.0.1:3000/api/v1/system/cpu-data'
+  // });
+
+  // const cpuData = cpuInfo.data.data.data;
+
+
+
+  // try{
+  //   const userSystem = await axios({
+  //     method: 'PATCH',
+  //     url: 'http://127.0.0.1:3000/api/v1/system',
+  //     data:{
+  //       manufacturer: 
+  //     }
+  //   })
+  // }
+
 })

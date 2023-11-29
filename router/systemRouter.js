@@ -5,7 +5,7 @@ const systemController = require('./../controllers/systemController');
 router = express.Router();
 
 router.route('/').post(systemController.createSystem);
-// router.route('/').patch(systemController.updateSystem);
+router.route('/').patch(systemController.updateSystem);
 
 
 router.route('/cpu-usage').get(systemController.getCPUUsage); // used 

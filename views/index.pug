@@ -6,44 +6,54 @@ html(lang="en")
         title #{title}
         link(rel="stylesheet", href="/styles/style.css")
     body
-        div.header
-            h1 Hi #{system.user.name}
-            button.btn__update_system(type="button" value=system.user._id) Update System
-        
+        main.main
+            div.sidebar
+                div.profile
+                    h3 My Profile
+                div.CPU
+                    h3 CPU 
+                
+                div.system
+                    h3 System
+            div.info
+                div.header
+                    h1 Hi #{system.user.name}
+                    button.btn__update_system(type="button" value=system.user._id) Update System
+                
 
-        div.chartContainer     
-            canvas#myChart(width="400", height="200")
+                div.chartContainer     
+                    canvas#myChart(width="400", height="200")
 
-        div.cpu-info
-            div.cpu_data.cpuManufacturer-heading CPU Manufacturer 
-            div.cpu_data.cpuManufacturer-name= system.cpuManufacturer
+                div.cpu-info
+                    div.cpu_data.cpuManufacturer-heading CPU Manufacturer 
+                    div.cpu_data.cpuManufacturer-name= system.cpuManufacturer
 
-            div.cpu_data.cpuBrand-heading CPU Brand 
-            div.cpu_data.cpuBrand-name= system.cpuBrand
+                    div.cpu_data.cpuBrand-heading CPU Brand 
+                    div.cpu_data.cpuBrand-name= system.cpuBrand
 
-            div.cpu_data.physicalCores-heading Physical Cores 
-            div.cpu_data.physicalCores-number= system.cpu_physicalCore
+                    div.cpu_data.physicalCores-heading Physical Cores 
+                    div.cpu_data.physicalCores-number= system.cpu_physicalCore
 
-            div.cpu_data.logicalProcessor-heading Logical Processors 
-            div.cpu_data.logicalProcessor-number= system.cpu_logicalCore
-
-
-        div.systemInfo-container
-            div.table-data.manufacturer-heading Manufacturer
-            div.table-data.manufacturer-name= system.manufacturer
-
-            div.table-data.model-heading Model
-            div.table-data.model-name= system.model
-
-            div.table-data.serialNumber-heading Serial Number 
-            div.table-data.serialNumber= system.serial
+                    div.cpu_data.logicalProcessor-heading Logical Processors 
+                    div.cpu_data.logicalProcessor-number= system.cpu_logicalCore
 
 
-        div.batteryChart
-            canvas#batteryData
+                div.systemInfo-container
+                    div.table-data.manufacturer-heading Manufacturer
+                    div.table-data.manufacturer-name= system.manufacturer
 
-        div.memoryChart
-            canvas#memoryChart
+                    div.table-data.model-heading Model
+                    div.table-data.model-name= system.model
+
+                    div.table-data.serialNumber-heading Serial Number 
+                    div.table-data.serialNumber= system.serial
+
+
+                div.batteryChart
+                    canvas#batteryData
+
+                div.memoryChart
+                    canvas#memoryChart
 
         
         script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js')

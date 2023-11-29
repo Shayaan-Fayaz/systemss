@@ -22,6 +22,10 @@ const systemSchema = new mongoose.Schema({
     cpu_logicalCore:{
         type: String
     },
+    changed:{
+        type: Boolean,
+        default: false
+    },
     user:{
         type: mongoose.Schema.ObjectId,
         ref: 'User'

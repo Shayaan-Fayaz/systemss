@@ -31,6 +31,19 @@
 
 /* this is the styling for the signup page*/
 
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar{
+    width: 10vw;
+}
+
+.info{
+    width: 100%;
+}
+
 .header{
     display: flex;
     flex-direction: row;

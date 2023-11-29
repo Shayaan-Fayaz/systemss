@@ -186,6 +186,53 @@ exports.getAllSystem =  async (req, res, next) => {
 
 
 // exports.updateSystem = async (req, res, next) => {
-//     const userSystem = await System.findOneAndUpdate({ user: req.body.userId}, {});
+//     const userSystem = await System.findOneAndUpdate({ user: req.body.userId}, {
+//         manufacturer: req.body.manufacturer,
+//         model: req.body.model,
+//         serial: req.body.serial,
+//         cpuManufacturer: req.body.cpuManufacturer,
+//         cpuBrand: req.body.cpuBrand,
+//         cpu_physicalCore: req.body.cpu_physicalCore,
+//         cpu_logicalCore: req.body.cpu_logicalCore
+//     },
+//     {
+//         new: true
+//     });
+
+
+//     res.status(200).json({
+//         status: 'success',
+//         data:{
+//             userSystem
+//         }
+//     })
 
 // }
+
+
+exports.updateSystem = async (req, res, next) => {
+    const user = req.body.userId;
+    const cpuData = await systemInformation.cpu();
+    const systemData = await systemInformation.system();
+    
+    const udpatedSystem = await System.findOneAndUpdate({ user: user }, {
+        manufacturer: systemData.manufacturer,
+        brand: systemData.brand,
+        serail: systemData.serial,
+        cpuManufacturer: cpuData.manufacturer,
+        cpuBrand: cpuData.brand,
+        cpu_physicalCore: cpuData.physicalCores,
+        cpu_logicalCore: cpuData.performanceCores,
+        changed: true
+    }, {
+        new: true
+    });
+
+
+    res.status(200).json({
+        status:'success',
+        data:{
+            udpatedSystem
+        }
+    })
+}
