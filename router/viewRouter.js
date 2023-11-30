@@ -7,5 +7,7 @@ router= express.Router();
 router.route('/me').get(authController.protect, viewController.getSystemInfoPage);
 router.route('/signup').get(viewController.getSignUpPage);
 router.route('/login').get(viewController.getLoginPage);
+router.route('/cpu').get(authController.protect, viewController.getCpuInfo);
+router.route('/device').get(authController.protect, viewController.getDeviceInfo)
 
 module.exports = router;

@@ -7,14 +7,14 @@ html(lang="en")
         link(rel="stylesheet", href="/styles/style.css")
     body
         main.main
-            div.sidebar
-                div.profile
-                    h3 My Profile
-                div.CPU
-                    h3 CPU 
+            navbar.sidebar
+                div.nav-section.profile
+                    a.nav-link(href="") My Profile 
+                div.nav-section.cpu
+                    a.nav-link(href="/cpu") CPU 
                 
-                div.system
-                    h3 System
+                div.nav-section.system
+                    a.nav-link(href="/device") System
             div.info
                 div.header
                     h1 Hi #{system.user.name}

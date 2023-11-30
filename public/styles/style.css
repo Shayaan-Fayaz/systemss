@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Lato&display=swap');
+
+*{
+    margin: 0;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+
 /* *{
     margin: 0;
     padding: 0;
@@ -5,6 +15,9 @@
 
 .chartContainer{
     display: grid;
+    width: 100%;
+    margin-bottom: 3.5rem;
+    margin-top: 3.5rem;
     /* flex-direction: column; */
 }
 
@@ -37,7 +50,23 @@
 }
 
 .sidebar{
-    width: 10vw;
+    width: 12vw;
+    font-size: 1.3rem;
+    /* height: 100vh; */
+    /* background-image: linear-gradient(to bottom right, whitesmoke, #696969 ); */
+    background-color: #d6d6d6;
+}
+
+
+.nav-section{
+    padding: 1rem;
+    border-bottom: 1px solid #696969;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #696969;
+    /* padding: 1rem; */
 }
 
 .info{
@@ -74,21 +103,40 @@
     font-size: 1.6rem;
 }
 
-.cpu-info{
+/* .cpu-info{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 3.5rem auto;
     font-size: 1.6rem;
     width: 50rem;
+} */
+
+.cpuInfo{
+    margin-left: 1rem;
+    width: 50rem;
+    margin: 0 auto;
 }
 
-.cpuManufacturer-heading, .cpuBrand-heading, .physicalCores-heading, .logicalProcessor-heading{
-    background-color: lightgray;
+.header_cpu{
+    text-transform: uppercase;
+    font-size: 600;
+    padding: 1rem;
+    background-color: #e8e8e8;
+    color: #6b6b6b;
 }
+
+.cpuInfo-table{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* .cpuManufacturer-heading, .cpuBrand-heading, .physicalCores-heading, .logicalProcessor-heading{
+    background-color: lightgray;
+} */
 
 .cpu_data{
-    padding: 1.3rem;
-    border: 1px solid black;
+    padding: 1rem;
+    border: 1px solid #bfbfbf;
 }
 
 .table-data{

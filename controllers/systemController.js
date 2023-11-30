@@ -80,6 +80,23 @@ exports.getSystemInfo = async(req, res, next) => {
     const cacheValue = await client.get('systemData');
 
     if(cacheValue){
+        // console.log(JSON.parse(cacheValue));
+
+        // const splitJSON = cacheValue.split(/(?<=\\})(?=\\{)/);
+        const jsonStringArray = cacheValue.match(/({.*?})/g);
+
+        const parsedObjects = jsonStringArray.map(jsonString => JSON.parse(jsonString));
+
+        console.log(parsedObjects)
+        // console.log(jsonStringArray);
+
+        // const parsedObjects = jsonStringArray.map(e => JSON.parse(e));
+
+        // console.log(parsedObjects)
+
+        // console.log(parsedObjects)
+
+        // console.log(splitJSON)
         return res.status(200).json({
             status: 'success',
             data:{
@@ -87,13 +104,20 @@ exports.getSystemInfo = async(req, res, next) => {
             }
         })
     }
-    const  systemInfo = await systemInformation.system();
-    client.set('systemData', JSON.stringify(systemInfo));
+    const systemInfo = await systemInformation.system();
+    const biosInfo = await systemInformation.bios();
+
+    const systemString = JSON.stringify(systemInfo);
+    const biosString = JSON.stringify(biosInfo);
+
+    const combinedString = systemString + biosString;
+    client.set('systemData', JSON.stringify(combinedString));
 
     res.status(200).json({
         status: 'success',
         data:{
-            data: systemInfo
+            system: systemInfo,
+            bios: biosInfo
         }
     })
 };
