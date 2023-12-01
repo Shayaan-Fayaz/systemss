@@ -42,4 +42,15 @@ exports.getDeviceInfo = async (req, res, next) => {
         title: 'System Info',
         system: userSystem
     })
+};
+
+
+exports.getMemoryInfo = async (req, res, next) => {
+    // const userId = req.user._id;
+
+    // const userSystem = await Syste
+
+    res.status(200).render('memory', {
+        title: 'Memory'
+    })
 }

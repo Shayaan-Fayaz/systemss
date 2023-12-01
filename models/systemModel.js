@@ -10,6 +10,18 @@ const systemSchema = new mongoose.Schema({
     serial: {
         type: String
     },
+    biosVendor:{
+        type: String
+    },
+    biosVersion:{
+        type: String
+    },
+    biosReleaseDate:{
+        type: Date
+    },
+    biosSerial:{
+        type: String
+    },
     cpuManufacturer: {
         type: String
     },

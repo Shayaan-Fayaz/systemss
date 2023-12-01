@@ -15,5 +15,39 @@ html(lang="en")
                 
                 div.nav-section.system
                     a.nav-link(href="/device") System
+
+                div.nav-section.system
+                    a.nav-link(href="/memory") Memory
+
+            div.deviceInfo
             
-            div.info
+                div.systemInfo
+                    h3.header_system System Info
+
+                    div.systemInfo-table
+                        div.system_data Manufacturer
+                        div.system_data= system.manufacturer
+
+                        div.system_data Model
+                        div.system_data= system.model
+
+                        div.system_data Serial 
+                        div.system_data= system.serial
+
+
+                div.biosInfo
+                    h3.header_bios BIOS Info
+
+                    div.biosInfo-table
+                        div.bios_data Vendor
+                        div.bios_data= system.biosVendor
+
+                        div.bios_data Version
+                        div.bios_data= system.biosVersion
+
+                        div.bios_data Release Date
+                        div.bios_data= system.biosReleaseDate
+
+                        div.bios_data Serial
+                        div.bios_data= system.biosSerial
+

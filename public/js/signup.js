@@ -28,7 +28,10 @@ const signupForm = document.querySelector('.signup__form').addEventListener('sub
             url: 'http://127.0.0.1:3000/api/v1/system/system-info'
         });
 
-        const systemInfoData = systemInfo.data.data.data;
+        const biosData = systemInfo.data.data.bios;
+        const systemData = systemInfo.data.data.system;
+
+        console.log(biosData, systemData);
 
         const cpuInfo = await axios({
             method: 'GET',
@@ -42,9 +45,13 @@ const signupForm = document.querySelector('.signup__form').addEventListener('sub
             method: 'POST',
             url: 'http://127.0.0.1:3000/api/v1/system/',
             data: {
-                manufacturer: systemInfoData.manufacturer,
-                model: systemInfoData.model,
-                serial: systemInfoData.serial,
+                manufacturer: systemData.manufacturer,
+                model: systemData.model,
+                serial: systemData.serial,
+                biosVendor: biosData.vendor,
+                biosVersion: biosData.version,
+                biosReleaseDate: biosData.releaseDate,
+                biosSerial: biosData.serial,
                 cpuManufacturer: cpuInfoData.manufacturer,
                 cpuBrand: cpuInfoData.brand,
                 cpu_physicalCore: cpuInfoData.physicalCores,

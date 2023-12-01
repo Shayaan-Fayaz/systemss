@@ -80,27 +80,21 @@ exports.getSystemInfo = async(req, res, next) => {
     const cacheValue = await client.get('systemData');
 
     if(cacheValue){
-        // console.log(JSON.parse(cacheValue));
-
-        // const splitJSON = cacheValue.split(/(?<=\\})(?=\\{)/);
         const jsonStringArray = cacheValue.match(/({.*?})/g);
 
-        const parsedObjects = jsonStringArray.map(jsonString => JSON.parse(jsonString));
+        const cleanedJsonStringArray = jsonStringArray.map(jsonString => jsonString.replace(/\\/g, ''));
 
-        console.log(parsedObjects)
-        // console.log(jsonStringArray);
+        const jsonObjectArray = cleanedJsonStringArray.map( e => JSON.parse(e));
+        // console.log(jsonObjectArray);
+        const system = jsonObjectArray[0];
+        const bios = jsonObjectArray[1];
+        
 
-        // const parsedObjects = jsonStringArray.map(e => JSON.parse(e));
-
-        // console.log(parsedObjects)
-
-        // console.log(parsedObjects)
-
-        // console.log(splitJSON)
         return res.status(200).json({
             status: 'success',
             data:{
-                data: JSON.parse(cacheValue)
+                system: system,
+                bios: bios 
             }
         })
     }
@@ -157,6 +151,9 @@ exports.getCPUTemp = async (req, res, next) => {
 
 exports.getMemory = async (req, res, next) => {
     const memoryData = await systemInformation.mem();
+    const memLayoutData = await systemInformation.memLayout();
+
+    console.log(memLayoutData);
 
     res.status(200).json({
         status: 'success',
@@ -171,6 +168,10 @@ exports.createSystem = async (req, res, next) => {
     const manufacturer = req.body.manufacturer;
     const model = req.body.model;
     const serial = req.body.serial;
+    const biosVendor = req.body.biosVendor;
+    const biosVersion = req.body.biosVersion;
+    const biosReleaseDate = req.body.biosReleaseDate;
+    const biosSerial = req.body.biosSerial;
     const cpuManufacturer = req.body.cpuManufacturer;
     const cpuBrand = req.body.cpuBrand;
     const cpu_physicalCore = req.body.cpu_physicalCore;
@@ -181,6 +182,10 @@ exports.createSystem = async (req, res, next) => {
         manufacturer: manufacturer,
         model: model,
         serial: serial,
+        biosVendor: biosVendor,
+        biosVersion: biosVersion,
+        biosReleaseDate: biosReleaseDate,
+        biosSerial: biosSerial,
         cpuManufacturer: cpuManufacturer,
         cpuBrand: cpuBrand,
         cpu_physicalCore: cpu_physicalCore,

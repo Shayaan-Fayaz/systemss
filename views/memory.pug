@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/styles/style.css")
+        title #{title}
+    body
+        main.main
+            navbar.sidebar
+                div.nav-section.profile
+                    a.nav-link(href="") My Profile 
+                div.nav-section.cpu
+                    a.nav-link(href="/cpu") CPU 
+                
+                div.nav-section.system
+                    a.nav-link(href="/device") System
+
+                div.nav-section.system
+                    a.nav-link(href="/memory") Memory
+
+            div.info
+                div.memoryChart
+                    canvas#memoryChart
+
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js')
+        script(src="https://cdn.jsdelivr.net/npm/chart.js")
+        script(src="/js/memory.js") 
