@@ -176,6 +176,10 @@ exports.createSystem = async (req, res, next) => {
     const cpuBrand = req.body.cpuBrand;
     const cpu_physicalCore = req.body.cpu_physicalCore;
     const cpu_logicalCore = req.body.cpu_logicalCore;
+    const osPlatform = req.body.osPlatform;
+    const osDistro = req.body.osDistro;
+    const osArch = req.body.osArch;
+    const osHost = req.body.osHost;
     const userId = req.body.user;
 
     const userData = await System.create({
@@ -190,6 +194,10 @@ exports.createSystem = async (req, res, next) => {
         cpuBrand: cpuBrand,
         cpu_physicalCore: cpu_physicalCore,
         cpu_logicalCore: cpu_logicalCore,
+        osPlatform: osPlatform,
+        osDistro: osDistro,
+        osArch: osArch,
+        osHost: osHost,
         user: userId
     });
 

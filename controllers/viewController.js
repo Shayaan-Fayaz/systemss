@@ -63,7 +63,12 @@ exports.getBatteryInfo = async (req, res, next) => {
 };
 
 exports.getOSInfo = async (req, res, next) => {
+    const userId = req.user._id;
+
+    const userSystem = await System.findOne({ user: userId });
+
     res.status(200).render('os', {
-        title: 'OS Info'
+        title: 'OS Info',
+        system: userSystem
     })
 }

@@ -34,6 +34,18 @@ const systemSchema = new mongoose.Schema({
     cpu_logicalCore:{
         type: String
     },
+    osPlatform:{
+        type: String
+    },
+    osDistro:{
+        type:String
+    },
+    osArch:{
+        type: String
+    },
+    osHost:{
+        type: String
+    },
     changed:{
         type: Boolean,
         default: false

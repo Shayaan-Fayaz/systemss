@@ -31,7 +31,7 @@ const signupForm = document.querySelector('.signup__form').addEventListener('sub
         const biosData = systemInfo.data.data.bios;
         const systemData = systemInfo.data.data.system;
 
-        console.log(biosData, systemData);
+        // console.log(biosData, systemData);
 
         const cpuInfo = await axios({
             method: 'GET',
@@ -39,6 +39,14 @@ const signupForm = document.querySelector('.signup__form').addEventListener('sub
         });
 
         const cpuInfoData = cpuInfo.data.data.data;
+
+        const os = await axios({
+            method:'GET',
+            url: 'http://127.0.0.1:3000/api/v1/system/os'
+        });
+
+        const osInfo = os.data.data.data;
+        // console.log(os.data.data.data)
         
 
         const createSystemInfo = await axios({
@@ -56,6 +64,10 @@ const signupForm = document.querySelector('.signup__form').addEventListener('sub
                 cpuBrand: cpuInfoData.brand,
                 cpu_physicalCore: cpuInfoData.physicalCores,
                 cpu_logicalCore: cpuInfoData.performanceCores,
+                osPlatform: osInfo.platform,
+                osDistro: osInfo.distro,
+                osArch: osInfo.arch,
+                osHost: osInfo.hostname,
                 user: userId
             }
         });

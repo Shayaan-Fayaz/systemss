@@ -3,6 +3,7 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/styles/style.css")
         title #{title}
     body
         main.main
@@ -23,3 +24,21 @@ html(lang="en")
 
                 div.nav-section.system
                     a.nav-link(href="/os") OS
+
+            div.deviceInfo
+            
+                div.osInfo
+                    h3.header_os OS Info
+
+                    div.osInfo-table
+                        div.os_data OS Platform
+                        div.os_data= system.osPlatform
+
+                        div.os_data OS Distro
+                        div.os_data= system.osDistro
+
+                        div.os_data OS Architecture 
+                        div.os_data= system.osArch
+
+                        div.os_data OS Host Name 
+                        div.os_data= system.osHost

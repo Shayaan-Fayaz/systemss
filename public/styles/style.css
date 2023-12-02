@@ -47,6 +47,7 @@ body{
 
 .sidebar{
     width: 12vw;
+    min-height: 100vh;
     font-size: 1.3rem;
     /* height: 100vh; */
     /* background-image: linear-gradient(to bottom right, whitesmoke, #696969 ); */
@@ -112,14 +113,14 @@ body{
     margin-top: 3.5rem;
 }
 
-.cpuInfo, .systemInfo, .biosInfo{
+.cpuInfo, .systemInfo, .biosInfo, .osInfo{
     /* margin-left: 1rem; */
     width: 100%;
     width: 50rem;
     margin: 0 auto 3.5rem auto;
 }
 
-.header_cpu, .header_system, .header_bios{
+.header_cpu, .header_system, .header_bios, .header_os{
     text-transform: uppercase;
     font-size: 600;
     padding: 1rem;
@@ -127,12 +128,12 @@ body{
     color: #6b6b6b;
 }
 
-.cpuInfo-table, .systemInfo-table, .biosInfo-table{
+.cpuInfo-table, .systemInfo-table, .biosInfo-table, .osInfo-table{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.cpu_data, .system_data, .bios_data{
+.cpu_data, .system_data, .bios_data, .os_data{
     padding: 1rem;
     border: 1px solid #bfbfbf;
 }

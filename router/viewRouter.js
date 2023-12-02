@@ -11,6 +11,6 @@ router.route('/cpu').get(authController.protect, viewController.getCpuInfo);
 router.route('/device').get(authController.protect, viewController.getDeviceInfo);
 router.route('/memory').get(authController.protect, viewController.getMemoryInfo);
 router.route('/battery').get(authController.protect, viewController.getBatteryInfo);
-// router.route
+router.route('/os').get(authController.protect, viewController.getOSInfo);
 
 module.exports = router;
