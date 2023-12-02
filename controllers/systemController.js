@@ -153,7 +153,7 @@ exports.getMemory = async (req, res, next) => {
     const memoryData = await systemInformation.mem();
     const memLayoutData = await systemInformation.memLayout();
 
-    console.log(memLayoutData);
+    // console.log(memLayoutData);
 
     res.status(200).json({
         status: 'success',
@@ -262,6 +262,17 @@ exports.updateSystem = async (req, res, next) => {
         status:'success',
         data:{
             udpatedSystem
+        }
+    })
+};
+
+exports.getOSInfo = async (req, res, next) => {
+    const os = await systemInformation.osInfo();
+
+    res.status(200).json({
+        status: 'success',
+        data:{
+            data: os
         }
     })
 }

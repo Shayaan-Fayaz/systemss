@@ -53,4 +53,17 @@ exports.getMemoryInfo = async (req, res, next) => {
     res.status(200).render('memory', {
         title: 'Memory'
     })
+};
+
+
+exports.getBatteryInfo = async (req, res, next) => {
+    res.status(200).render('battery', {
+        title: 'Battery'
+    })
+};
+
+exports.getOSInfo = async (req, res, next) => {
+    res.status(200).render('os', {
+        title: 'OS Info'
+    })
 }

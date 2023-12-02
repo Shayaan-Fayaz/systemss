@@ -24,29 +24,27 @@ html(lang="en")
 
                 div.nav-section.system
                     a.nav-link(href="/os") OS
-            
+
             div.info
-                div.chartContainer     
-                    canvas#myChart
 
-                div.cpuInfo
-                    h3.header_cpu CPU Information
+                div.batteryChart
+                    canvas#batteryData
 
-                    div.cpuInfo-table
-                            div.cpu_data.cpuManufacturer-heading CPU Manufacturer 
-                            div.cpu_data.cpuManufacturer-name= system.cpuManufacturer
+                div.deviceInfo
+            
+                //- div.systemInfo
+                //-     h3.header_battery Battery Info 
 
-                            div.cpu_data.cpuBrand-heading CPU Brand 
-                            div.cpu_data.cpuBrand-name= system.cpuBrand
+                //-     div.systemInfo-table
+                //-         div.system_data Maximum Capacity
+                //-         div.system_data= system.b
 
-                            div.cpu_data.physicalCores-heading Physical Cores 
-                            div.cpu_data.physicalCores-number= system.cpu_physicalCore
+                //-         div.system_data Model
+                //-         div.system_data= system.model
 
-                            div.cpu_data.cpuBrand-heading CPU Brand 
-                            div.cpu_data.cpuBrand-name= system.cpuBrand
-
-
+                //-         div.system_data Serial 
+                //-         div.system_data= system.serial
 
         script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js')
         script(src="https://cdn.jsdelivr.net/npm/chart.js")
-        script(src="/js/cpu.js")
+        script(src="/js/battery.js") 
