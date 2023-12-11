@@ -1,6 +1,7 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
+const multer = require('multer');
 const socketio = require('socket.io');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');

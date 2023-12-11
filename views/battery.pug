@@ -1,36 +1,13 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/styles/style.css")
-        title #{title}
-    body
-        main.main
-            navbar.sidebar
-                div.nav-section.profile
-                    a.nav-link(href="") My Profile 
-                div.nav-section.cpu
-                    a.nav-link(href="/cpu") CPU 
-                
-                div.nav-section.system
-                    a.nav-link(href="/device") System
+extends base
 
-                div.nav-section.system
-                    a.nav-link(href="/memory") Memory
+block content
 
-                div.nav-section.system
-                    a.nav-link(href="/battery") Battery
+    div.info
 
-                div.nav-section.system
-                    a.nav-link(href="/os") OS
+        div.batteryChart
+            canvas#batteryData
 
-            div.info
-
-                div.batteryChart
-                    canvas#batteryData
-
-                div.deviceInfo
+        //- div.deviceInfo
             
                 //- div.systemInfo
                 //-     h3.header_battery Battery Info 
@@ -45,6 +22,3 @@ html(lang="en")
                 //-         div.system_data Serial 
                 //-         div.system_data= system.serial
 
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js')
-        script(src="https://cdn.jsdelivr.net/npm/chart.js")
-        script(src="/js/battery.js") 

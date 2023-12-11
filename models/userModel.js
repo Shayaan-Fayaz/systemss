@@ -1,60 +1,68 @@
-const crypto = require('crypto');
-const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcrypt');
+const crypto = require("crypto");
+const mongoose = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    email: {
-        type: String,
-        lowercase: true
+  name: String,
+  email: {
+    type: String,
+    lowercase: true,
+  },
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
+  password: {
+    type: String,
+    select: false,
+  },
+  passwordConfirm: {
+    type: String,
+    validate: {
+      validator: function (el) {
+        return el === this.password;
+      },
+      message: "Passwords are not the same!",
     },
-    password: {
-        type: String,
-        select: false
-    },
-    passwordConfirm: {
-        type: String,
-        validate: {
-            validator: function(el){
-                return el === this.password
-            },
-            message: 'Passwords are not the same!'
-        }
-    },
-    passwordChangedAt: Date,
-    passwordResetToken: String,
-    passwordResetExpires: Date
+  },
+  passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
 });
 
-userSchema.pre('save', async function(next) {
-    if(!this.isModified('password')) return next();
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
 
-    this.password = await bcrypt.hash(this.password, 12);
+  this.password = await bcrypt.hash(this.password, 12);
 
-    this.passwordConfirm = undefined;
+  this.passwordConfirm = undefined;
 
-    next();
+  next();
 });
 
-
-userSchema.methods.correctPassword = async function(candidatePassword, userPassword){
-    return await bcrypt.compare(candidatePassword, userPassword);
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
 };
 
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
 
-userSchema.methods.createPasswordResetToken = function(){
-    const resetToken = crypto.randomBytes(32).toString('hex');
+  this.passwordResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
 
-    this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+  console.log({ resetToken }, this.passwordResetToken);
 
-    console.log({ resetToken }, this.passwordResetToken)
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
-    this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  return resetToken;
+};
 
-    return resetToken;
-}
-
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
