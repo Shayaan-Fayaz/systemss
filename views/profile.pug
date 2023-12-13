@@ -6,13 +6,22 @@ block content
         div.user-info
             h2.myprofile_header My Profile 
 
-            form.my-info 
-                div.form-change_username
-                    p.profile-username Username 
-                    input.profile-username_input(type="text", placeholder='NINAD ANNA') 
+            
+            div.form-change_username
+                p.profile-username Username 
+                input.profile-username_input(type="text", placeholder='NINAD ANNA') 
 
+
+                form.machine-name_form
+                    p.laptop-name Unleash Your Laptop's Alias
+                    input.laptop-name_input(type="text", placeholder="Your Laptop's Alias")
+                    input.save_laptop-name(type="submit", value="Confirm machine alias")
+                    //- button.save_laptop-name Confirm Laptop Name
+
+            form.change_user-photo
                 div.form-change_photo
                     img.form_user-image(src=`/img/users/${user.photo}`, alt="your photo")
-                    input.form_upload(type="file", id='photo', name='photo', placeholder="Choose new photo")
-                    label(for="photo") Choose a new photo 
-
+                    label(for='file-upload', class='custom-file-upload')
+                        | Choose New Photo
+                    input.form__upload#file-upload(type='file', style='display: none;')
+                     

@@ -188,8 +188,8 @@ body {
 }
 
 .profile-username {
-  font-size: 1.5rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
   /* border-radius: 50%; */
 }
 
@@ -197,10 +197,80 @@ body {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
-  background-color: #e5e4e2;
+  background-color: #f2f2f2;
+  border: none;
+  margin-bottom: 2.5rem;
+}
+
+.laptop-name {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.laptop-name_input {
+  font-size: 1rem;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #f2f2f2;
   border: none;
 }
 
-.form_upload {
+.save_laptop-name {
+  font-size: 1rem;
+  margin: 1rem 0;
+  background-color: #f0f0f0;
+  padding: 12px 20px;
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save_laptop-name:hover {
+  background-color: #e0e0e0;
+}
+
+/* .form_upload {
   font-size: colo;
+} */
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+}
+
+.custom-file-upload:hover {
+  background-color: #e0e0e0;
+}
+
+/* styling for the alert */
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.2rem 12rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: #eb4d4b;
 }
