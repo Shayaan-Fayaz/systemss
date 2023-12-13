@@ -1,0 +1,18 @@
+extends base
+
+block content
+
+    div.user-main
+        div.user-info
+            h2.myprofile_header My Profile 
+
+            form.my-info 
+                div.form-change_username
+                    p.profile-username Username 
+                    input.profile-username_input(type="text", placeholder='NINAD ANNA') 
+
+                div.form-change_photo
+                    img.form_user-image(src=`/img/users/${user.photo}`, alt="your photo")
+                    input.form_upload(type="file", id='photo', name='photo', placeholder="Choose new photo")
+                    label(for="photo") Choose a new photo 
+
