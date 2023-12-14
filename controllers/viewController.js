@@ -1,5 +1,8 @@
+const { users } = require("systeminformation");
 const System = require("./../models/systemModel");
 const User = require("./../models/userModel");
+
+const client = require("./../utils/redisClient");
 
 exports.getSystemInfoPage = async (req, res, next) => {
   const userId = req.user._id;
@@ -24,9 +27,25 @@ exports.getLoginPage = (req, res, next) => {
 };
 
 exports.getCpuInfo = async (req, res, next) => {
+  const cacheValue = await client.get("cpuDataRender");
+
+  if (cacheValue) {
+    // console.log(JSON.parse(cacheValue));
+    return res.status(200).render("cpu", {
+      title: "CPU",
+      system: JSON.parse(cacheValue),
+    });
+    // return res.status(200).json({
+    //   status: "success",
+    //   data: {
+    //     data: JSON.parse(cacheValue),
+    //   },
+    // });
+  }
   const userId = req.user._id;
 
   const userSystem = await System.findOne({ user: userId });
+  client.set("cpuDataRender", JSON.stringify(userSystem));
   res.status(200).render("cpu", {
     title: "CPU",
     system: userSystem,
@@ -34,9 +53,19 @@ exports.getCpuInfo = async (req, res, next) => {
 };
 
 exports.getDeviceInfo = async (req, res, next) => {
+  const cacheValue = await client.get("deviceDataRender");
+
+  if (cacheValue) {
+    console.log("Im here");
+    return res.status(200).render("device", {
+      title: "System",
+      system: JSON.parse(cacheValue),
+    });
+  }
   const userId = req.user._id;
 
   const userSystem = await System.findOne({ user: userId });
+  client.set("deviceDataRender", JSON.stringify(userSystem));
 
   res.status(200).render("device", {
     title: "System Info",
@@ -61,9 +90,18 @@ exports.getBatteryInfo = async (req, res, next) => {
 };
 
 exports.getOSInfo = async (req, res, next) => {
+  const cacheValue = await client.get("OSDataRender");
+
+  if (cacheValue) {
+    return res.status(200).render("os", {
+      title: "OS Info",
+      system: JSON.parse(cacheValue),
+    });
+  }
   const userId = req.user._id;
 
   const userSystem = await System.findOne({ user: userId });
+  client.set("OSDataRender", JSON.stringify(userSystem));
 
   res.status(200).render("os", {
     title: "OS Info",
