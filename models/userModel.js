@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "default.jpg",
   },
+  laptopName: {
+    type: String,
+  },
   password: {
     type: String,
     select: false,

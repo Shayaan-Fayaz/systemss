@@ -14,6 +14,8 @@ router
     userController.uploadUserPhoto,
     userController.updateMe
   );
+
+// router.route('/laptop-name').patch(authController.protect, userController)
 // router.route('/resetPassword').patch(authController.resetPa)
 
 module.exports = router;

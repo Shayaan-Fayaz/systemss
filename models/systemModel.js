@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
 const systemSchema = new mongoose.Schema({
-  laptopName: {
-    type: String,
-  },
   manufacturer: {
     type: String,
   },

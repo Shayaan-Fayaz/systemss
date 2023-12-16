@@ -7,21 +7,31 @@ block content
             h2.myprofile_header My Profile 
 
             
-            div.form-change_username
-                p.profile-username Username 
-                input.profile-username_input(type="text", placeholder='NINAD ANNA') 
+            form.update_form
+                div.form-change_username
+                    p.profile-username Username 
+                    input.profile-username_input(type="text", value=`${user.name}`) 
 
 
-                form.machine-name_form
-                    p.laptop-name Unleash Your Laptop's Alias
-                    input.laptop-name_input(type="text", placeholder="Your Laptop's Alias")
-                    input.save_laptop-name(type="submit", value="Confirm machine alias")
-                    //- button.save_laptop-name Confirm Laptop Name
+                div.change-machine_name
+                    if user.laptopName
+                        p.laptop-name Update Your Laptop's Alias
+                        input.laptop-name_input(type="text", value=`${user.laptopName}`, placeholder="Your Laptop's Alias")
+                    else
+                        p.laptop-name Unleash Your Laptop's Alias
+                        input.laptop-name_input(type="text", value=`${user.laptopName}`, placeholder="Your Laptop's Alias")
+                    //- input.save_laptop-name(type="submit", value="Confirm machine alias")
 
-            form.change_user-photo
-                div.form-change_photo
-                    img.form_user-image(src=`/img/users/${user.photo}`, alt="your photo")
-                    label(for='file-upload', class='custom-file-upload')
-                        | Choose New Photo
-                    input.form__upload#file-upload(type='file', style='display: none;')
-                     
+
+                div.change-user_photo
+                    div.form-change_photo
+                        img.form_user-image(src=`/img/users/${user.photo}`, alt="your photo")
+                        label(for='file-upload', class='custom-file-upload')
+                            | Choose New Photo
+                        input.form__upload#file-upload(type='file', accept="image/*", style='display: none;')
+
+                div.submit_button-div
+                    input.submit_button(type="submit")
+
+        script(type="module"  src="/js/myProfile.js")
+        

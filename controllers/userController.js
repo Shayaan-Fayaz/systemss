@@ -57,11 +57,17 @@ exports.updateMe = async (req, res, next) => {
   }
 
   // 2) Filtered out unwanted fields names that are notallowed to be updated
-  const filteredBody = filterObj(req.body, "name", "email");
+  const filteredBody = filterObj(req.body, "name", "email", "laptopName");
 
   // console.log(req.user._id);
 
   if (req.file) filteredBody.photo = req.file.filename;
+  // if (req.body.laptopName) filteredBody.laptopName = req.body.laptopName;
+
+  // console.log(req);
+
+  console.log(req.body);
+  console.log(filteredBody);
 
   // 3) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {
