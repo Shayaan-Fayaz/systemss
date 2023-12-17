@@ -346,3 +346,50 @@ body {
   color: #fff;
   min-height: 10vh;
 }
+
+.header-info {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 3rem;
+  justify-content: space-between;
+}
+
+.header_username {
+  font-size: 2rem;
+  align-self: center;
+  transition: 0.2s;
+  text-transform: uppercase;
+}
+
+.header_username:hover {
+  transform: translateY(-2px);
+}
+
+.user_logout-photo {
+  display: flex;
+  flex-direction: row;
+}
+
+.logout {
+  align-self: center;
+  margin-right: 2rem;
+  font-size: 1.2rem;
+  padding: 0.7rem 1.5rem;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 10rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout:hover {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.header_user-photo {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}

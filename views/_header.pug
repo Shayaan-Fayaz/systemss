@@ -1,2 +1,6 @@
-p.header_username Hi #{user.name}
+div.header-info
+    p.header_username HI #{user.name}
 
+    div.user_logout-photo
+        button.logout LOGOUT
+        img.header_user-photo(src=`/img/users/${user.photo}`, alt="Your Photo")
