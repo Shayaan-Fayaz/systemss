@@ -6,7 +6,7 @@ const { system } = require("systeminformation");
 router = express.Router();
 
 router.route("/").post(systemController.createSystem);
-router.route("/").patch(systemController.updateSystem);
+router.route("/").patch(authController.protect, systemController.updateSystem);
 
 router.route("/cpu-usage").get(systemController.getCPUUsage); // used
 router.route("/cpu-data").get(systemController.getCPUdata); // used

@@ -1,59 +1,36 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/styles/style.css")
-        title #{title}
-    body
-        main.main
-            navbar.sidebar
-                div.nav-section.profile
-                    a.nav-link(href="") My Profile 
-                div.nav-section.cpu
-                    a.nav-link(href="/cpu") CPU 
-                
-                div.nav-section.system
-                    a.nav-link(href="/device") System
+extends base
 
-                div.nav-section.system
-                    a.nav-link(href="/memory") Memory
+block content
 
-                div.nav-section.system
-                    a.nav-link(href="/battery") Battery
-
-                div.nav-section.system
-                    a.nav-link(href="/os") OS
-
-            div.deviceInfo
+    div.deviceInfo
             
-                div.systemInfo
-                    h3.header_system System Info
+        div.systemInfo
+            h3.header_system System Info
 
-                    div.systemInfo-table
-                        div.system_data Manufacturer
-                        div.system_data= system.manufacturer
+            div.systemInfo-table
+                div.system_data Manufacturer
+                div.system_data= system.manufacturer
 
-                        div.system_data Model
-                        div.system_data= system.model
+                div.system_data Model
+                div.system_data= system.model
 
-                        div.system_data Serial 
-                        div.system_data= system.serial
+                div.system_data Serial 
+                div.system_data= system.serial
 
 
-                div.biosInfo
-                    h3.header_bios BIOS Info
+        div.biosInfo
+            h3.header_bios BIOS Info
 
-                    div.biosInfo-table
-                        div.bios_data Vendor
-                        div.bios_data= system.biosVendor
+            div.biosInfo-table
+                div.bios_data Vendor
+                div.bios_data= system.biosVendor
 
-                        div.bios_data Version
-                        div.bios_data= system.biosVersion
+                div.bios_data Version
+                div.bios_data= system.biosVersion
 
-                        div.bios_data Release Date
-                        div.bios_data= system.biosReleaseDate
+                div.bios_data Release Date
+                div.bios_data= system.biosReleaseDate
 
-                        div.bios_data Serial
-                        div.bios_data= system.biosSerial
+                div.bios_data Serial
+                    div.bios_data= system.biosSerial
 

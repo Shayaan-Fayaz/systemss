@@ -7,10 +7,12 @@ const client = require("./../utils/redisClient");
 exports.getSystemInfoPage = async (req, res, next) => {
   const userId = req.user._id;
   const userSystem = await System.findOne({ user: userId });
+  const user = req.user;
 
   res.status(200).render("index", {
     title: "System Info",
     system: userSystem,
+    user: user,
   });
 };
 
@@ -27,6 +29,8 @@ exports.getLoginPage = (req, res, next) => {
 };
 
 exports.getCpuInfo = async (req, res, next) => {
+  const user = req.user;
+
   const cacheValue = await client.get("userData");
 
   if (cacheValue) {
@@ -34,6 +38,7 @@ exports.getCpuInfo = async (req, res, next) => {
     return res.status(200).render("cpu", {
       title: "CPU",
       system: JSON.parse(cacheValue),
+      user: user,
     });
   }
   const userId = req.user._id;
@@ -43,16 +48,19 @@ exports.getCpuInfo = async (req, res, next) => {
   res.status(200).render("cpu", {
     title: "CPU",
     system: userSystem,
+    user: user,
   });
 };
 
 exports.getDeviceInfo = async (req, res, next) => {
+  const user = req.user;
   const cacheValue = await client.get("userData");
 
   if (cacheValue) {
     return res.status(200).render("device", {
       title: "System",
       system: JSON.parse(cacheValue),
+      user: user,
     });
   }
   const userId = req.user._id;
@@ -63,32 +71,40 @@ exports.getDeviceInfo = async (req, res, next) => {
   res.status(200).render("device", {
     title: "System Info",
     system: userSystem,
+    user: user,
   });
 };
 
 exports.getMemoryInfo = async (req, res, next) => {
+  const user = req.user;
   // const userId = req.user._id;
 
   // const userSystem = await Syste
 
   res.status(200).render("memory", {
     title: "Memory",
+    user: user,
   });
 };
 
 exports.getBatteryInfo = async (req, res, next) => {
+  const user = req.user;
+
   res.status(200).render("battery", {
     title: "Battery",
+    user: user,
   });
 };
 
 exports.getOSInfo = async (req, res, next) => {
+  const user = req.user;
   const cacheValue = await client.get("userData");
 
   if (cacheValue) {
     return res.status(200).render("os", {
       title: "OS Info",
       system: JSON.parse(cacheValue),
+      user: user,
     });
   }
   const userId = req.user._id;
@@ -99,6 +115,7 @@ exports.getOSInfo = async (req, res, next) => {
   res.status(200).render("os", {
     title: "OS Info",
     system: userSystem,
+    user: user,
   });
 };
 

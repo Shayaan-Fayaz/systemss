@@ -167,7 +167,7 @@ body {
 }
 
 .user-main {
-  margin: 3.5rem;
+  /* margin: 3.5rem; */
   /* background-color: #e8e8e8; */
   padding: 4rem;
   width: 100%;
@@ -290,6 +290,31 @@ body {
   transform: translateY(-2px);
 }
 
+.update_system-div {
+  margin-top: 2.5rem;
+  color: #696969;
+  text-decoration: underline;
+}
+
+.update_system-header {
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.update_system {
+  font-size: 1.4rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10rem;
+  cursor: pointer;
+  color: #696969;
+  transition: 0.2s;
+}
+
+.update_system:hover {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
 /* styling for the alert */
 .alert {
   position: fixed;
@@ -313,4 +338,11 @@ body {
 }
 .alert--error {
   background-color: #eb4d4b;
+}
+
+/* the below is the styling for the header */
+.base-header {
+  background-color: #4e5066;
+  color: #fff;
+  min-height: 10vh;
 }

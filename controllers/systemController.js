@@ -242,9 +242,11 @@ exports.getAllSystem = async (req, res, next) => {
 // }
 
 exports.updateSystem = async (req, res, next) => {
-  const user = req.body.userId;
+  const user = req.user._id;
   const cpuData = await systemInformation.cpu();
   const systemData = await systemInformation.system();
+  const osData = await systemInformation.osInfo();
+  const biosData = await systemInformation.bios();
 
   const udpatedSystem = await System.findOneAndUpdate(
     { user: user },
@@ -252,10 +254,18 @@ exports.updateSystem = async (req, res, next) => {
       manufacturer: systemData.manufacturer,
       brand: systemData.brand,
       serail: systemData.serial,
+      biosVendor: biosData.vendor,
+      biosVersion: biosData.version,
+      biosReleaseDate: biosData.releaseDate,
+      biosSerial: biosData.serial,
       cpuManufacturer: cpuData.manufacturer,
       cpuBrand: cpuData.brand,
       cpu_physicalCore: cpuData.physicalCores,
       cpu_logicalCore: cpuData.performanceCores,
+      osPlatform: osData.platform,
+      osDistro: osData.distro,
+      osArch: osData.arch,
+      osHost: osData.hostname,
       changed: true,
     },
     {

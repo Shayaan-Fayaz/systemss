@@ -6,8 +6,7 @@ import { udpateSettings } from "./updateSettings.js";
 console.log("random");
 
 const uploadForm = document.querySelector(".update_form");
-
-// console.log(uploadForm);
+const updateSystemBtn = document.querySelector(".update_system");
 
 uploadForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -16,15 +15,10 @@ uploadForm.addEventListener("submit", async (e) => {
   const form = new FormData();
 
   form.append("name", document.querySelector(".profile-username_input").value);
-  //   console.log(form);
-  //   form.append("laptopName", document.querySelector(".laptop-name_input").value);
 
   form.append("laptopName", document.querySelector(".laptop-name_input").value);
 
   console.log(document.querySelector(".laptop-name_input").value);
-  //   form.append("photo", document.querySelector("t.form__upload"));
-
-  //   console.log(document.querySelector(".form__upload").files[0]);
 
   form.append("photo", document.querySelector(".form__upload").files[0]);
 
@@ -35,11 +29,21 @@ uploadForm.addEventListener("submit", async (e) => {
       location.assign("/profile");
     }, 3000);
   }
-  //   if (result === "success") {
-  //     window.setTimeout(() => {
-  //       location.assign("/");
-  //     }, 3000);
-  //   }
+});
 
-  //   console.log(form);
+updateSystemBtn.addEventListener("click", async () => {
+  console.log("button clicked");
+
+  try {
+    const res = await axios({
+      method: "PATCH",
+      url: "http://127.0.0.1:3000/api/v1/system",
+    });
+
+    console.log(res);
+    showAlert("success", "System Data updated successfully!");
+  } catch (err) {
+    showAlert("error", "Error in updateing system. Try again later");
+    console.log(err);
+  }
 });
