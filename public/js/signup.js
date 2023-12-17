@@ -76,6 +76,9 @@ const signupForm = document
       });
 
       showAlert("success", "You are signed in successfully!");
+      window.setTimeout(() => {
+        location.assign("/cpu");
+      }, 3000);
     } catch (err) {
       showAlert("success", "Error");
     }
