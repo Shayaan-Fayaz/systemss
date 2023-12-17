@@ -1,15 +1,15 @@
-#Systemsss
+<h1>Systemsss</h1>
 
 This project is an attempt to exploring hardware specifics while also working on my backend skills.
 
 
-##Tech Stack
-Backend Framework: Express.js
-Database: MongoDB
-Caching: Redis (via Docker in Windows environment)
-Libraries: Systeminformation, Chart.js
+<h2>Tech Stack</h2>
+<strong>Backend Framework:</strong> Express.js
+<strong>Database:</strong>strong> MongoDB
+<strong>Caching:</strong>strong> Redis (via Docker in Windows environment)
+<strong>Libraries:</strong>strong> Systeminformation, Chart.js
 
-##How to Use
+<h2>How to Use</h2>
 1. Clone the repository: `git clone https://github.com/yourusername/system-info-backend.git`
 2. Install dependenciesL `npm install`
 3. Set up MongoDB and Redis instances.
