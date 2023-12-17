@@ -9,7 +9,7 @@
 <p><strong>Libraries:</strong> Systeminformation, Chart.js</p>
 
 <h2>How to Use</h2>
-<p>1. Clone the repository: `git clone https://github.com/yourusername/system-info-backend.git`</p>
+<p>1. Clone the repository: `git clone https://github.com/Shayaan-Fayaz/systemss.git`</p>
 <p>2. Install dependenciesL `npm install`</p>
 <p>3. Set up MongoDB and Redis instances.</p>
 <p>4. Configure environment variables as needed.</p>
