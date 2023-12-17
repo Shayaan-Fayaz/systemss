@@ -4,9 +4,9 @@
 
 <h2>Tech Stack</h2>
 <p><strong>Backend Framework:</strong> Express.js</p>
-<p><strong>Database:</strong>strong> MongoDB</p>
-<p><strong>Caching:</strong>strong> Redis (via Docker in Windows environment)</p>
-<p><strong>Libraries:</strong>strong> Systeminformation, Chart.js</p>
+<p><strong>Database:</strong> MongoDB</p>
+<p><strong>Caching:</strong> Redis (via Docker in Windows environment)</p>
+<p><strong>Libraries:</strong> Systeminformation, Chart.js</p>
 
 <h2>How to Use</h2>
 <p>1. Clone the repository: `git clone https://github.com/yourusername/system-info-backend.git`</p>
