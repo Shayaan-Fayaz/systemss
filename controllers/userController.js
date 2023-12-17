@@ -45,9 +45,6 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 exports.updateMe = async (req, res, next) => {
-  // console.log(req.file);
-  // console.log(req.body);
-
   // 1) Create error if user POSTs password data
   if (req.body.password || req.body.passwordConfirm) {
     return res.status(400).json({
@@ -59,23 +56,13 @@ exports.updateMe = async (req, res, next) => {
   // 2) Filtered out unwanted fields names that are notallowed to be updated
   const filteredBody = filterObj(req.body, "name", "email", "laptopName");
 
-  // console.log(req.user._id);
-
   if (req.file) filteredBody.photo = req.file.filename;
-  // if (req.body.laptopName) filteredBody.laptopName = req.body.laptopName;
-
-  // console.log(req);
-
-  console.log(req.body);
-  console.log(filteredBody);
 
   // 3) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {
     new: true,
     runValidators: true,
   });
-
-  // console.log(updatedUser);
 
   res.status(200).json({
     status: "success",

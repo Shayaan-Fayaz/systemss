@@ -18,18 +18,18 @@ exports.getCPUUsage = async (req, res, next) => {
 };
 
 exports.getCPUdata = async (req, res, next) => {
-  const cacheValue = await client.get("cpuData");
+  // const cacheValue = await client.get("cpuData");
 
-  if (cacheValue) {
-    return res.status(200).json({
-      status: "success",
-      data: {
-        data: JSON.parse(cacheValue),
-      },
-    });
-  }
+  // if (cacheValue) {
+  //   return res.status(200).json({
+  //     status: "success",
+  //     data: {
+  //       data: JSON.parse(cacheValue),
+  //     },
+  //   });
+  // }
   const data = await systemInformation.cpu();
-  client.set("cpuData", JSON.stringify(data));
+  // client.set("cpuData", JSON.stringify(data));
 
   res.status(200).json({
     status: "success",
@@ -39,72 +39,36 @@ exports.getCPUdata = async (req, res, next) => {
   });
 };
 
-// exports.systemUptime = (req, res, next) => {
-//     const uptimeSeconds = os.uptime();
-//     console.log(uptimeSeconds);
-
-//     const totalMinutes = Math.floor(uptimeSeconds / 60);
-
-//     const seconds = uptimeSeconds % 60;
-//     const hours = Math.floor(totalMinutes / 60);
-//   const minutes = totalMinutes % 60;
-
-//   return { h: hours, m: minutes, s: seconds };
-//     let formattedUptime = '';
-
-//     if (days > 0) {
-//         formattedUptime += `${days} days `;
-//     }
-
-//     if (hours > 0 || (days > 0 && hours === 0)) {
-//         formattedUptime += `${hours} hours `;
-//     }
-
-//     if (minutes > 0 || (hours > 0 && minutes === 0)) {
-//         formattedUptime += `${minutes} minutes`;
-//     }
-
-//     console.log(formattedUptime.trim());
-
-//     res.status(200).json({
-//         data: 'success',
-//         data:{
-//             data: formattedUptime
-//         }
-//     })
-// }
-
 exports.getSystemInfo = async (req, res, next) => {
-  const cacheValue = await client.get("systemData");
+  // const cacheValue = await client.get("systemData");
 
-  if (cacheValue) {
-    const jsonStringArray = cacheValue.match(/({.*?})/g);
+  // if (cacheValue) {
+  //   const jsonStringArray = cacheValue.match(/({.*?})/g);
 
-    const cleanedJsonStringArray = jsonStringArray.map((jsonString) =>
-      jsonString.replace(/\\/g, "")
-    );
+  //   const cleanedJsonStringArray = jsonStringArray.map((jsonString) =>
+  //     jsonString.replace(/\\/g, "")
+  //   );
 
-    const jsonObjectArray = cleanedJsonStringArray.map((e) => JSON.parse(e));
-    // console.log(jsonObjectArray);
-    const system = jsonObjectArray[0];
-    const bios = jsonObjectArray[1];
+  // const jsonObjectArray = cleanedJsonStringArray.map((e) => JSON.parse(e));
+  // const system = jsonObjectArray[0];
+  // const bios = jsonObjectArray[1];
 
-    return res.status(200).json({
-      status: "success",
-      data: {
-        system: system,
-        bios: bios,
-      },
-    });
-  }
+  // return res.status(200).json({
+  //   status: "success",
+  //   data: {
+  //     system: system,
+  //     bios: bios,
+  //   },
+  // });
+  // }
   const systemInfo = await systemInformation.system();
   const biosInfo = await systemInformation.bios();
 
-  const systemString = JSON.stringify(systemInfo);
-  const biosString = JSON.stringify(biosInfo);
+  // const systemString = JSON.stringify(systemInfo);
+  // const biosString = JSON.stringify(biosInfo);
 
-  const combinedString = systemString + biosString;
-  client.set("systemData", JSON.stringify(combinedString));
+  // const combinedString = systemString + biosString;
+  // client.set("systemData", JSON.stringify(combinedString));
 
   res.status(200).json({
     status: "success",
@@ -151,8 +115,6 @@ exports.getCPUTemp = async (req, res, next) => {
 exports.getMemory = async (req, res, next) => {
   const memoryData = await systemInformation.mem();
   const memLayoutData = await systemInformation.memLayout();
-
-  // console.log(memLayoutData);
 
   res.status(200).json({
     status: "success",
@@ -218,29 +180,6 @@ exports.getAllSystem = async (req, res, next) => {
   });
 };
 
-// exports.updateSystem = async (req, res, next) => {
-//     const userSystem = await System.findOneAndUpdate({ user: req.body.userId}, {
-//         manufacturer: req.body.manufacturer,
-//         model: req.body.model,
-//         serial: req.body.serial,
-//         cpuManufacturer: req.body.cpuManufacturer,
-//         cpuBrand: req.body.cpuBrand,
-//         cpu_physicalCore: req.body.cpu_physicalCore,
-//         cpu_logicalCore: req.body.cpu_logicalCore
-//     },
-//     {
-//         new: true
-//     });
-
-//     res.status(200).json({
-//         status: 'success',
-//         data:{
-//             userSystem
-//         }
-//     })
-
-// }
-
 exports.updateSystem = async (req, res, next) => {
   const user = req.user._id;
   const cpuData = await systemInformation.cpu();
@@ -273,6 +212,8 @@ exports.updateSystem = async (req, res, next) => {
     }
   );
 
+  client.del("userData");
+
   res.status(200).json({
     status: "success",
     data: {
@@ -283,10 +224,7 @@ exports.updateSystem = async (req, res, next) => {
 
 exports.updateLaptopName = async (req, res, next) => {
   const userId = req.user.id;
-  // console.log(userId);
-  // console.log(userId);
   const laptopName = req.body.laptopName;
-  // console.log(laptopName);
 
   const updatedLaptop = await System.findOneAndUpdate(
     { user: userId },
@@ -297,8 +235,6 @@ exports.updateLaptopName = async (req, res, next) => {
       new: true,
     }
   );
-
-  // console.log(updatedLaptop);
 
   res.status(200).json({
     status: "success",

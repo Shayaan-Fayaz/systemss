@@ -3,29 +3,40 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/styles/style.css")
         title #{title}
     body 
-        h1 Sign Up 
-        
-        form.signup__form
-            div.form__group
-                label(for="name") Username:
-                input.form__input#name(type="text")
+        header.intro-header
+            p.systemsss_heading Systemsss
+            
+        main.main_signup
+            form.signup__form
+                h1.signup_heading Sign Up 
 
-            div.form__group
-                label(for="email") Email:
-                input.form__input#email(type="text")
+                div.form__group
+                    label.form__label(for="name") Username:
+                    input.form__input#name(type="text", placeholder="")
 
-            div.form__group
-                label(for="password") Password:
-                input.form__input#password(type="text")
+                div.form__group
+                    label.form__label(for="email") Email:
+                    input.form__input#email(type="text", placeholder="you@example.com")
 
-            div.form__group
-                label(for="passwordConfirm") Password Confirm:
-                input.form__input#passwordConfirm(type="text")
-                
+                div.form__group
+                    label.form__label(for="password") Password:
+                    input.form__input#password(type="password", placeholder="••••••••")
 
-            input.btn__signup(type="submit", value="Submit")
+                div.form__group
+                    label.form__label(for="passwordConfirm") Password Confirm:
+                    input.form__input#passwordConfirm(type="password", placeholder="••••••••")
+                    
+                div.form__group
+                    label.form__label(for="laptop-name") Your Machine's Alias:
+                    input.form__input#laptopName(type="text", placeholder="Enter alias here!")
+
+                input.btn__signup(type="submit", value="Submit")
+
+                div.olduser__login
+                    a.login__link(href="/") Already have an account? Login here 
 
         script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js')
-        script(src="/js/signup.js") 
+        script(type="module", src="/js/signup.js") 

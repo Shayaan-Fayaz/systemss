@@ -34,7 +34,6 @@ exports.getCpuInfo = async (req, res, next) => {
   const cacheValue = await client.get("userData");
 
   if (cacheValue) {
-    // console.log(JSON.parse(cacheValue));
     return res.status(200).render("cpu", {
       title: "CPU",
       system: JSON.parse(cacheValue),
@@ -132,14 +131,4 @@ exports.getMyProfile = async (req, res, next) => {
     title: "My Profile",
     user: user,
   });
-
-  //   console.log(req.user);
-
-  //   const userInfo = await User.findOne({ user: userId });
-  //   console.log(userInfo);
-
-  //   res.status(200).render("profile", {
-  //     title: "My Profile",
-  //     user: userInfo,
-  //   });
 };

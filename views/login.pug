@@ -6,18 +6,30 @@ html(lang="en")
         link(rel="stylesheet", href="styles/style.css")
         title #{title}
     body
-        h1 Log In 
+        header.intro-header
+            p.systemsss_heading Systemsss
 
-        form.login__form
-            div.form__group 
-                label(for="email") Email: 
-                input.form__input#email(type='text')
+                //- div.user_logout-photo
+                //-     button.logout LOGOUT
+                //-     img.header_user-photo(src=`/img/users/${user.photo}`, alt="Your Photo")
+        
+        main.login-main
+            h1.login_header Log In 
 
-            div.form__group 
-                label(for="email") Password: 
-                input.form__input#password(type='text')
+            form.login__form
+                div.form__group 
+                    label.form__label(for="email") Email: 
+                    input.form__input#email(type='text')
 
-            input.btn__signup(type="submit", value="Submit")
+                div.form__group 
+                    label.form__label(for="email") Password: 
+                    input.form__input#password(type='text')
+
+                input.btn__login(type="submit", value="Login")
+
+                div.newuser__signup
+                    a.signup__link(href="/signup") New User? Signup here
+
 
         script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js')
-        script(src="/js/login.js") 
+        script(type="module", src="/js/login.js") 

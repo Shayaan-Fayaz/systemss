@@ -12,7 +12,7 @@ logoutBtn.addEventListener("click", async () => {
     if (res.data.status === "success") {
       showAlert("success", "Logged Out Successfully");
       window.setTimeout(() => {
-        location.assign("/login");
+        location.assign("/");
       }, 3000);
     }
   } catch (err) {

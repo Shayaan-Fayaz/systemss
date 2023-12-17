@@ -31,6 +31,7 @@ body {
   display: grid;
 }
 #memoryChart {
+  margin-top: 2rem;
   width: 70vw !important;
   height: 70vh !important;
   justify-self: center;
@@ -354,14 +355,24 @@ body {
   justify-content: space-between;
 }
 
-.header_username {
+/* .header_username {
   font-size: 2rem;
   align-self: center;
   transition: 0.2s;
   text-transform: uppercase;
+} */
+
+/* .header_username:hover {
+  transform: translateY(-2px);
+} */
+
+.header_machine-name {
+  align-self: center;
+  font-size: 2rem;
+  transition: 0.2s;
 }
 
-.header_username:hover {
+.header_machine-name:hover {
   transform: translateY(-2px);
 }
 
@@ -392,4 +403,108 @@ body {
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
+}
+
+/* the below is the styling for the login form */
+.login-main {
+  margin: 6rem 8rem;
+  background-color: #e0e0e0;
+  padding: 5rem 7rem;
+  border-radius: 20px;
+}
+
+.login_header {
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.form__label {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.form__input {
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn__login,
+.btn__signup {
+  font-size: 1.2rem;
+  padding: 1rem 2.5rem;
+  text-transform: uppercase;
+  border-radius: 10rem;
+  min-width: 8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn__login:hover,
+.btn__signup:hover {
+  transform: translateY(-2px);
+}
+
+.newuser__signup,
+.olduser__login {
+  margin-top: 2rem;
+}
+
+.signup__link,
+.login__link {
+  color: black;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+/* the below is the styling for the header of login page and signin page */
+.intro-header {
+  background-color: #4e5066;
+  color: #fff;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* height: 100%; */
+  /* align-content: center; */
+}
+
+/* .header-intro-info {
+} */
+
+.systemsss_heading {
+  align-self: center;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+
+.systemsss_heading:hover {
+  transform: translateY(-2px);
+}
+
+/* the below is the styling for the signup form */
+.main_signup {
+  margin: 6rem 8rem;
+  padding: 5rem 7rem;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+}
+
+.signup_heading {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.signup__form {
+  margin-top: 2rem;
+  max-width: 50rem;
+  margin: 0 auto;
 }
